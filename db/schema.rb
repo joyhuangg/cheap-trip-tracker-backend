@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2018_10_31_214330) do
     t.string "address"
     t.float "price"
     t.string "property_name"
+    t.float "rating"
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,6 +57,8 @@ ActiveRecord::Schema.define(version: 2018_10_31_214330) do
     t.string "longitude"
     t.string "latitude"
     t.string "address"
+    t.float "price"
+    t.string "cuisines"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

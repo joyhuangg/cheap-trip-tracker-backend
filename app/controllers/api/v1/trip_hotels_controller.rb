@@ -1,6 +1,6 @@
 class Api::V1::TripHotelsController < ApplicationController
 
-  before_action :find_trip_hotel, only: [:update, :show, :destroy]
+  before_action :find_trip_hotel, only: [:update, :show]
 
   def index
     @trip_hotels = TripHotel.all
@@ -14,6 +14,8 @@ class Api::V1::TripHotelsController < ApplicationController
 
   def create
      @trip_hotel = TripHotel.new(trip_hotel_params)
+     @trip_hotels = TripHotel.where(trip_id: trip_hotel_params['trip_id'])
+     @trip_hotels.each{|trip_hotel| trip_hotel.destroy}
      if @trip_hotel.save
        render json: {trip_hotel:@trip_hotel}, status: :created
      else
@@ -32,6 +34,7 @@ class Api::V1::TripHotelsController < ApplicationController
   end
 
   def destroy
+    @trip_hotel = TripHotel.find_by(trip_id: params[:trip_id], hotel_id:params[:hotel_id])
     @trip_hotel.destroy
     render status: :accepted
   end

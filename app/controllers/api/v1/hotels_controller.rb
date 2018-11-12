@@ -38,7 +38,7 @@ class Api::V1::HotelsController < ApplicationController
   private
 
   def hotel_params
-    params.require(:hotel).permit(:longitude, :latitude, :address, :price, :property_name)
+    params.require(:hotel).permit(:longitude, :latitude, :rating, :image_url, :address, :price, :property_name)
   end
 
   def find_hotel

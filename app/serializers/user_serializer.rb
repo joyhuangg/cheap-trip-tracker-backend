@@ -6,4 +6,5 @@ class UserSerializer < ActiveModel::Serializer
     object.trips.find{|trip| trip.id == object.current_trip_id}
   end
 
+
 end

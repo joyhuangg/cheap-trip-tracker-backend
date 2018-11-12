@@ -1,4 +1,4 @@
 class RestaurantSerializer < ActiveModel::Serializer
-  attributes :id, :image_url, :name, :url, :rating, :longitude, :latitude, :address
+  attributes :id, :image_url, :cuisines, :name, :url, :rating, :longitude, :latitude, :address, :price
 
 end

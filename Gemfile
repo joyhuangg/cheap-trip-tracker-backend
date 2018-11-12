@@ -16,6 +16,7 @@ gem 'puma', '~> 3.11'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
+gem "jwt", "~> 2.1"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -25,7 +26,9 @@ gem 'active_model_serializers'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-
+gem 'rest-client'
+gem 'json'
+gem 'pry'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 

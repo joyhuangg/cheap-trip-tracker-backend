@@ -3,7 +3,6 @@
 # require 'pry'
 
 class Api::V1::RestaurantsController < ApplicationController
-  before_action :find_restaurant, only: [:update, :show, :destroy]
 
   def index
     @restaurants = Restaurant.all
@@ -11,12 +10,13 @@ class Api::V1::RestaurantsController < ApplicationController
   end
 
 
- # # to do fetch this from front end fetch restaurants here from yelp and return
- #  def yelp_restaurants
- #    byebug
- #  end
+ # to do fetch this from front end fetch restaurants here from yelp and return
+  def yelp_restaurants
+    render json: Restaurant.fetch_restaurants(params['lon'], params['lat'])
+  end
 
    def show
+     @restaurant = Restaurant.find(params[:id])
      render json: @restaurant
    end
 
@@ -32,6 +32,7 @@ class Api::V1::RestaurantsController < ApplicationController
    end
 
   def update
+    @restaurant = Restaurant.find(params[:id])
     @restaurant.update(restaurant_params)
     if @restaurant.save
       render json: @restaurant, status: :accepted
@@ -41,6 +42,7 @@ class Api::V1::RestaurantsController < ApplicationController
   end
 
   def destroy
+    @restaurant = Restaurant.find(params[:id])
     @restaurant.destroy
     render status: :accepted
   end
@@ -48,10 +50,7 @@ class Api::V1::RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:image_url, :name, :url, :rating, :longitude, :latitude, :address)
+    params.require(:restaurant).permit(:image_url, :cuisines, :name, :url, :rating, :longitude, :latitude, :address, :price)
   end
 
-  def find_restaurant
-    @restaurant = Restaurant.find(params[:id])
-  end
 end
