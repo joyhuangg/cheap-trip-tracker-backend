@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :update, :create]
       resources :trips
       delete '/trip_hotels', to: 'trip_hotels#destroy'
+      delete '/trip_restaurants', to: 'trip_restaurants#destroy'
       resources :trip_hotels
       resources :trip_restaurants
       resources :flights

@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2018_10_31_214330) do
     t.string "address"
     t.float "price"
     t.string "cuisines"
+    t.string "yelp_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

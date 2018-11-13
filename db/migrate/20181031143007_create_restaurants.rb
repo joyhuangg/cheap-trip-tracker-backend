@@ -10,6 +10,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
       t.string :address
       t.float :price
       t.string :cuisines
+      t.string :yelp_id
 
       t.timestamps
     end

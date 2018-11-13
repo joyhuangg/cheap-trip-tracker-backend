@@ -1,6 +1,6 @@
 class Api::V1::TripRestaurantsController < ApplicationController
 
-    before_action :find_trip_restaurant, only: [:update, :show, :destroy]
+    before_action :find_trip_restaurant, only: [:update, :show]
 
     def index
       @trip_restaurants = TripRestaurant.all
@@ -32,6 +32,7 @@ class Api::V1::TripRestaurantsController < ApplicationController
     end
 
     def destroy
+      @trip_restaurant = TripRestaurant.find_by(trip_id: params[:trip_id], restaurant_id:params[:restaurant_id])
       @trip_restaurant.destroy
       render status: :accepted
     end
